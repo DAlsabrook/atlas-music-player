@@ -1,15 +1,11 @@
-import { CoverArt } from "./CoverArt"
-import { SongTitle } from "./SongTitle"
-import { PlayControls } from "./PlayControls"
-import { VolumeControls } from "./VolumeControls"
+import CurrentlyPlaying from "./CurrentlyPlaying"
+import { PlayList } from "./Playlist"
 
 export default function MusicPlayer() {
   return (
-    <div>
-      <CoverArt/>
-      <SongTitle/>
-      <PlayControls/>
-      <VolumeControls/>
+    <div className="flex flex-col md:flex-row">
+      <CurrentlyPlaying/>
+      <PlayList/>
     </div>
   )
 }

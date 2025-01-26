@@ -4,24 +4,28 @@ import "rc-slider/assets/index.css";
 
 export function VolumeControls () {
     return (
-        <div className="flex">
-            <FaVolumeUp/>
+        <div className="flex py-2">
+            <div className="mr-3">
+                <FaVolumeUp/>
+            </div>
             <Slider
                 min={0}
                 max={100}
                 defaultValue={50}
                 onChange={(value) => console.log("Volume:", value)}
                 trackStyle={{
-                    backgroundColor: '#333333',
-                }}
-                railStyle={{
-                    borderColor: '#333333',
+                    height: '8px',
+                    backgroundColor: '#666666'
                 }}
                 handleStyle={{
-                    borderColor: '#333333',
-                    backgroundColor: '#333333',
-                    opacity: 1,
+                    height: '110%',
+                    borderColor: '#666666',
+                    backgroundColor: '#666666',
                     cursor: 'pointer',
+                    opacity: 1,
+                }}
+                railStyle={{
+                    height: '8px',
                 }}
             />
         </div>
