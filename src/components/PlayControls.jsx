@@ -8,7 +8,7 @@ export function PlayControls () {
             <button className='cursor-pointer opacity-50'>
                 <FaBackward/>
             </button>
-            <button className='cursor-pointer border-2 rounded-lg p-4'>
+            <button className='cursor-pointer border-2 rounded-lg p-4 text-(--secondary) dark:text-(--bg-color)'>
                 <FaPlay/>
             </button>
             <button className='cursor-pointer'>
