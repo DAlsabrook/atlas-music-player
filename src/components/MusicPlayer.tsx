@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import CurrentlyPlaying from "./CurrentlyPlaying"
 import { PlayList } from "./Playlist"
 
@@ -17,10 +17,17 @@ export default function MusicPlayer() {
   const [loading, setLoading] = useState<Boolean>(true);
   const [playlist, setPlaylist] = useState<Song[]>([]);
   const [currentSong, setCurrentSong] = useState<number>(0)
+  const [isPlaying, setIsPlaying] = useState<Boolean>(false)
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 2000)
   }, [])
+
+  useEffect(() => {
+    if (isPlaying) {
+      console.log('is playing now: ', isPlaying)
+    }
+  }, [isPlaying])
 
   useEffect(() => {
     const fetchPlaylist = async () => {
@@ -55,10 +62,15 @@ export default function MusicPlayer() {
     fetchPlaylist();
   }, []);
 
-  console.log(playlist)
   return (
     <div className="flex flex-col md:flex-row bg-(--bg-color) dark:bg-(--secondary) text-(--primary) dark:text-(--bg-color) border-4 border-(--secondary) dark:border-(--bg-color) rounded-2xl">
-      <CurrentlyPlaying loading={loading} playlist={playlist} currentSong={currentSong} setCurrentSong={setCurrentSong}/>
+      <CurrentlyPlaying
+        loading={loading}
+        playlist={playlist}
+        currentSong={currentSong}
+        setCurrentSong={setCurrentSong}
+        setIsPlaying={setIsPlaying}
+      />
       <PlayList loading={loading} playlist={playlist} currentSong={currentSong}/>
     </div>
   )
