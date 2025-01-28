@@ -20,16 +20,6 @@ export default function MusicPlayer() {
   const [isPlaying, setIsPlaying] = useState<Boolean>(false)
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 2000)
-  }, [])
-
-  useEffect(() => {
-    if (isPlaying) {
-      console.log('is playing now: ', isPlaying)
-    }
-  }, [isPlaying])
-
-  useEffect(() => {
     const fetchPlaylist = async () => {
       try {
         const response = await fetch('http://localhost:5173/api/v1/playlist');
@@ -70,6 +60,7 @@ export default function MusicPlayer() {
         currentSong={currentSong}
         setCurrentSong={setCurrentSong}
         setIsPlaying={setIsPlaying}
+        isPlaying={isPlaying}
       />
       <PlayList loading={loading} playlist={playlist} currentSong={currentSong}/>
     </div>

@@ -6,8 +6,10 @@ type playControlsProps = {
     songsLength: number
     setCurrentSong: Function
     setIsPlaying: Function
+    isPlaying: Boolean
 }
-export function PlayControls ({ currentSong, songsLength, setCurrentSong, setIsPlaying }: playControlsProps) {
+
+export function PlayControls ({ currentSong, songsLength, setCurrentSong, setIsPlaying, isPlaying }: playControlsProps) {
     const [nextEnd, setNextEnd] = useState<Boolean>(false)
     const [prevEnd, setPrevEnd] = useState<Boolean>(false)
 
@@ -46,8 +48,8 @@ export function PlayControls ({ currentSong, songsLength, setCurrentSong, setIsP
                 <FaBackward/>
             </button>
             <button className='cursor-pointer border-2 rounded-lg p-4 text-(--secondary) dark:text-(--bg-color)'
-                onClick={() => setIsPlaying(true)}>
-                <FaPlay/>
+                onClick={() => setIsPlaying(!isPlaying)}>
+                {isPlaying ? (<FaPause/>):(<FaPlay/>)}
             </button>
             <button className={`cursor-pointer ${nextEnd ? 'opacity-50' : 'opacity-100'}`} onClick={handleNext}>
                 <FaForward/>
