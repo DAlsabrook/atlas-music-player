@@ -2,7 +2,7 @@ import { PlayListItem } from "./PlayListItem";
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
-export function PlayList(props) {
+export function PlayList({loading}: {loading: Boolean}) {
   const songs = {
     'Midnight Journey': ['Echoes of Eternity', '3:45'],
     'Sunset Boulevard': ['Neon Dreams', '1:23'],
@@ -21,7 +21,7 @@ export function PlayList(props) {
   return (
     <div className="flex flex-col w-full mx-auto p-5">
       <h2 className="text-3xl font-bold mb-3">Playlist</h2>
-      {props.loading ? (
+      {loading ? (
         Array.from({ length: 10 }).map((_, index) => (
           <div key={index} className="w-full flex justify-between">
             <div className="w-52">

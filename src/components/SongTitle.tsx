@@ -1,10 +1,10 @@
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
-export function SongTitle(props) {
+export function SongTitle({loading}: {loading: Boolean}) {
     return (
         <div className="flex flex-col my-2">
-            {props.loading ? (
+            {loading ? (
                 <>
                     <Skeleton className="w-3/4 h-10 mb-2" />
                     <Skeleton className="w-1/2 h-6" />
