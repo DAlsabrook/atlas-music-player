@@ -1,22 +1,14 @@
 import { PlayListItem } from "./PlayListItem";
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import { Song } from "./MusicPlayer";
 
-export function PlayList({loading}: {loading: Boolean}) {
-  const songs = {
-    'Midnight Journey': ['Echoes of Eternity', '3:45'],
-    'Sunset Boulevard': ['Neon Dreams', '1:23'],
-    'Whispering Winds': ['Silent Echo', '2:26'],
-    'Electric Pulse': ['Voltage Vibes', '3:36'],
-    'Starlight Serenade': ['Galactic Harmony', '2:21'],
-    'Mystic River': ['Enchanted Waters', '1:13'],
-    'Crimson Horizon': ['Scarlet Skies', '2:14'],
-    'Golden Sands': ['Desert Mirage', '5:24'],
-    'Aurora Borealis': ['Northern Lights', '4:23'],
-    'Celestial Dance': ['Astral Groove', '1:22']
-  };
+type CurrentlyPlayingProps = {
+  loading: Boolean;
+  playlist: Song[];
+}
 
-  const songEntries = Object.entries(songs);
+export function PlayList({ loading, playlist }: CurrentlyPlayingProps) {
 
   return (
     <div className="flex flex-col w-full mx-auto p-5">
@@ -36,8 +28,14 @@ export function PlayList({loading}: {loading: Boolean}) {
           </div>
         ))
       ) : (
-        songEntries.map(([songName, [artist, time]], index) => (
-          <PlayListItem key={index} songName={songName} songTime={time} artist={artist} isPlaying={index === 0} />
+        playlist.map((song, index) => (
+          <PlayListItem
+            key={song.id.toString()}
+            songName={song.title}
+            songTime={song.duration}
+            artist={song.artist}
+            isPlaying={index === 0}
+          />
         ))
       )}
     </div>

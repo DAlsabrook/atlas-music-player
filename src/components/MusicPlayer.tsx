@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import CurrentlyPlaying from "./CurrentlyPlaying"
 import { PlayList } from "./Playlist"
 
-type Song = {
+export type Song = {
   artist: String
   cover: String
   duration: Number
@@ -27,7 +27,7 @@ export default function MusicPlayer() {
         const response = await fetch('http://localhost:5173/api/v1/playlist');
         if (response.ok) {
           const data = await response.json();
-          const detailedSongs = await Promise.all(data.map(async (song) => {
+          const detailedSongs = await Promise.all(data.map(async (song: Song) => {
             const songDetailsResponse = await fetch(`http://localhost:5173/api/v1/songs/${song.id}`);
             if (songDetailsResponse.ok) {
               const songDetails = await songDetailsResponse.json();
@@ -35,7 +35,7 @@ export default function MusicPlayer() {
             }
             return song;
           }));
-          const fullDetailedSongs = await Promise.all(detailedSongs.map(async (song) => {
+          const fullDetailedSongs = await Promise.all(detailedSongs.map(async (song: Song) => {
             const songDetailsResponse = await fetch(`http://localhost:5173/api/v1/lyrics/${song.id}`);
             if (songDetailsResponse.ok) {
               const songDetails = await songDetailsResponse.json();
@@ -57,8 +57,8 @@ export default function MusicPlayer() {
   // console.log(playlist)
   return (
     <div className="flex flex-col md:flex-row bg-(--bg-color) dark:bg-(--secondary) text-(--primary) dark:text-(--bg-color) border-4 border-(--secondary) dark:border-(--bg-color) rounded-2xl">
-      <CurrentlyPlaying loading={loading}/>
-      <PlayList loading={loading}/>
+      <CurrentlyPlaying loading={loading} playlist={playlist}/>
+      <PlayList loading={loading} playlist={playlist}/>
     </div>
   )
 }

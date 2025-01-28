@@ -1,13 +1,13 @@
 type PlayListItemProps = {
-  songName: string;
-  songTime: string;
-  artist: string;
-  isPlaying: boolean;
+  songName: String;
+  songTime: Number;
+  artist: String;
+  isPlaying: Boolean;
 }
 
-
-
 export function PlayListItem({ songName, songTime, artist, isPlaying }: PlayListItemProps) {
+    const time = songTime.toString()
+    const formattedTime = `${time.slice(0, 1)}:${time.slice(1)}`;
 
     return (
         <div className={`w-full flex justify-between items-center mb-2 rounded-md ${isPlaying ? 'bg-(--secondary) dark:bg-(--bg-color) text-white dark:text-(--secondary)' : 'bg-transparent'}`}>
@@ -15,7 +15,7 @@ export function PlayListItem({ songName, songTime, artist, isPlaying }: PlayList
                 <p className='font-bold'>{songName}</p>
                 <p className='font-bold opacity-70'>{artist}</p>
             </div>
-            <p className="font-bold opacity-50">{songTime}</p>
+            <p className="font-bold opacity-50">{formattedTime}</p>
         </div>
     )
 }
