@@ -6,9 +6,10 @@ import { Song } from "./MusicPlayer";
 type CurrentlyPlayingProps = {
   loading: Boolean;
   playlist: Song[];
+  currentSong: number
 }
 
-export function PlayList({ loading, playlist }: CurrentlyPlayingProps) {
+export function PlayList({ loading, playlist, currentSong }: CurrentlyPlayingProps) {
 
   return (
     <div className="flex flex-col w-full mx-auto p-5">
@@ -34,7 +35,7 @@ export function PlayList({ loading, playlist }: CurrentlyPlayingProps) {
             songName={song.title}
             songTime={song.duration}
             artist={song.artist}
-            isPlaying={index === 0}
+            isPlaying={currentSong == index}
           />
         ))
       )}

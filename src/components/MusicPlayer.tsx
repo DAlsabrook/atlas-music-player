@@ -4,7 +4,7 @@ import { PlayList } from "./Playlist"
 
 export type Song = {
   artist: String
-  cover: String
+  cover: string
   duration: Number
   genre: String
   id: String
@@ -16,6 +16,7 @@ export type Song = {
 export default function MusicPlayer() {
   const [loading, setLoading] = useState<Boolean>(true);
   const [playlist, setPlaylist] = useState<Song[]>([]);
+  const [currentSong, setCurrentSong] = useState<number>(0)
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 2000)
@@ -54,11 +55,11 @@ export default function MusicPlayer() {
     fetchPlaylist();
   }, []);
 
-  // console.log(playlist)
+  console.log(playlist)
   return (
     <div className="flex flex-col md:flex-row bg-(--bg-color) dark:bg-(--secondary) text-(--primary) dark:text-(--bg-color) border-4 border-(--secondary) dark:border-(--bg-color) rounded-2xl">
-      <CurrentlyPlaying loading={loading} playlist={playlist}/>
-      <PlayList loading={loading} playlist={playlist}/>
+      <CurrentlyPlaying loading={loading} playlist={playlist} currentSong={currentSong} setCurrentSong={setCurrentSong}/>
+      <PlayList loading={loading} playlist={playlist} currentSong={currentSong}/>
     </div>
   )
 }

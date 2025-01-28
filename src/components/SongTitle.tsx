@@ -1,7 +1,14 @@
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import { Song } from './MusicPlayer';
 
-export function SongTitle({loading}: {loading: Boolean}) {
+type songTitleProps = {
+    loading: Boolean;
+    playlist: Song[]
+    currentSong: number
+}
+
+export function SongTitle({loading, playlist, currentSong}: songTitleProps) {
     return (
         <div className="flex flex-col my-2">
             {loading ? (
@@ -11,8 +18,8 @@ export function SongTitle({loading}: {loading: Boolean}) {
                 </>
             ) : (
                 <>
-                    <p className='font-bold text-4xl'>Midnight Journey</p>
-                    <p className='opacity-50 text-xl my-2'>Echoes of Eternity</p>
+                    <p className='font-bold text-4xl'>{playlist[currentSong].title}</p>
+                    <p className='opacity-50 text-xl my-2'>{playlist[currentSong].artist}</p>
                 </>
             )}
         </div>
