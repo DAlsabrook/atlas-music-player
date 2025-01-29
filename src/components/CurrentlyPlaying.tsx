@@ -11,9 +11,12 @@ type CurrentlyPlayingProps = {
   setCurrentSong: Function
   setIsPlaying: Function
   isPlaying: Boolean
+  setVolume: Function
+  setSpeed: Function
+  speed: number
 }
 
-export default function CurrentlyPlaying({ loading, playlist, currentSong, setCurrentSong, setIsPlaying, isPlaying }: CurrentlyPlayingProps) {
+export default function CurrentlyPlaying({ loading, playlist, currentSong, setCurrentSong, setIsPlaying, isPlaying, setVolume, setSpeed, speed }: CurrentlyPlayingProps) {
 
   return (
     <div className="flex flex-col w-full m-auto p-5 md:border-r-3 border-(--secondary) dark:border-(--bg-color)">
@@ -25,8 +28,10 @@ export default function CurrentlyPlaying({ loading, playlist, currentSong, setCu
         setCurrentSong={setCurrentSong}
         setIsPlaying={setIsPlaying}
         isPlaying={isPlaying}
+        setSpeed={setSpeed}
+        speed={speed}
       />
-      <VolumeControls />
+      <VolumeControls setVolume={setVolume}/>
     </div>
   );
 }

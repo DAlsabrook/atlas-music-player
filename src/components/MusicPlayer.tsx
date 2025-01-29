@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CurrentlyPlaying from "./CurrentlyPlaying"
 import { PlayList } from "./Playlist"
+import { AudioPlayer } from "./AudioPlayer"
 
 export type Song = {
   artist: String
@@ -18,6 +19,9 @@ export default function MusicPlayer() {
   const [playlist, setPlaylist] = useState<Song[]>([]);
   const [currentSong, setCurrentSong] = useState<number>(0)
   const [isPlaying, setIsPlaying] = useState<Boolean>(false)
+  const [song, setSong] = useState<String>('')
+  const [volume, setVolume] = useState<number>(50)
+  const [speed, setSpeed] = useState<number>(1.0)
 
   useEffect(() => {
     const fetchPlaylist = async () => {
@@ -52,6 +56,12 @@ export default function MusicPlayer() {
     fetchPlaylist();
   }, []);
 
+   useEffect(() => {
+    if (playlist.length > 0) {
+      setSong(playlist[currentSong].song);
+    }
+   }, [currentSong, playlist])
+
   return (
     <div className="flex flex-col md:flex-row bg-(--bg-color) dark:bg-(--secondary) text-(--primary) dark:text-(--bg-color) border-4 border-(--secondary) dark:border-(--bg-color) rounded-2xl">
       <CurrentlyPlaying
@@ -61,7 +71,13 @@ export default function MusicPlayer() {
         setCurrentSong={setCurrentSong}
         setIsPlaying={setIsPlaying}
         isPlaying={isPlaying}
+        setVolume={setVolume}
+        setSpeed={setSpeed}
+        speed={speed}
       />
+      {song && (
+        <AudioPlayer song={song} isPlaying={isPlaying} volume={volume} speed={speed} />
+      )}
       <PlayList loading={loading} playlist={playlist} currentSong={currentSong}/>
     </div>
   )

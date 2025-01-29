@@ -7,9 +7,11 @@ type playControlsProps = {
     setCurrentSong: Function
     setIsPlaying: Function
     isPlaying: Boolean
+    setSpeed: Function
+    speed: number
 }
 
-export function PlayControls ({ currentSong, songsLength, setCurrentSong, setIsPlaying, isPlaying }: playControlsProps) {
+export function PlayControls ({ currentSong, songsLength, setCurrentSong, setIsPlaying, isPlaying, setSpeed, speed }: playControlsProps) {
     const [nextEnd, setNextEnd] = useState<Boolean>(false)
     const [prevEnd, setPrevEnd] = useState<Boolean>(false)
 
@@ -41,9 +43,23 @@ export function PlayControls ({ currentSong, songsLength, setCurrentSong, setIsP
         const randomIndex = Math.floor(Math.random() * songsLength);
         setCurrentSong(randomIndex);
     };
+
+    const handleSpeed = () => {
+        const speeds = [0.5, 1.0, 2.0]
+        speeds.forEach((spd, index) => {
+            if (spd == speed) {
+                setSpeed(speeds[(index + 1) % speeds.length])
+            }
+        })
+    }
+
     return (
         <div className='flex justify-between w-full p-2'>
-            <button className='cursor-pointer font-medium'>1x</button>
+            <button className='cursor-pointer font-medium'
+            onClick={handleSpeed}
+            >
+                {speed}x
+            </button>
             <button className={`cursor-pointer ${prevEnd ? 'opacity-50' : 'opacity-100'}`} onClick={handlePrev}>
                 <FaBackward/>
             </button>
