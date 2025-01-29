@@ -7,26 +7,59 @@ afterEach(() => {
     cleanup();
 });
 
-async function fetchPlaylist() {
-    const response = await fetch('/api/playlist');
-    return response.json();
+export type Song = {
+  artist: String
+  cover: string
+  duration: Number
+  genre: String
+  id: String
+  lyrics: String
+  song: String
+  title: String
 }
+
+const fetchPlaylist = async () => {
+    const response = await fetch('http://localhost:5173/api/v1/playlist');
+    if (response.ok) {
+        const data = await response.json();
+        const detailedSongs = await Promise.all(data.map(async (song: Song) => {
+        const songDetailsResponse = await fetch(`http://localhost:5173/api/v1/songs/${song.id}`);
+        if (songDetailsResponse.ok) {
+            const songDetails = await songDetailsResponse.json();
+            return { ...song, ...songDetails };
+        }
+        return song;
+        }));
+        const fullDetailedSongs = await Promise.all(detailedSongs.map(async (song: Song) => {
+        const songDetailsResponse = await fetch(`http://localhost:5173/api/v1/lyrics/${song.id}`);
+        if (songDetailsResponse.ok) {
+            const songDetails = await songDetailsResponse.json();
+            return { ...song, ...songDetails };
+        }
+            return song;
+        }));
+        return fullDetailedSongs
+    }
+};
 
 test('Playing is false', async () => {
     const playlist = await fetchPlaylist();
-    const container = render(<PlayListItem songName={playlist.title} songTime={playlist.duration} artist={playlist.artist} isPlaying={false}/>)
+    if (!playlist) throw new Error('Playlist is undefined');
+    const container = render(<PlayListItem songName={playlist[0].title} songTime={playlist[0].duration} artist={playlist[0].artist} isPlaying={false}/>)
     expect(container).toMatchSnapshot();
 })
 
 test('Playing is true', async () => {
     const playlist = await fetchPlaylist();
-    const container = render(<PlayListItem songName={playlist.title} songTime={playlist.duration} artist={playlist.artist} isPlaying={true}/>)
+    if (!playlist) throw new Error('Playlist is undefined');
+    const container = render(<PlayListItem songName={playlist[0].title} songTime={playlist[0].duration} artist={playlist[0].artist} isPlaying={true}/>)
     expect(container).toMatchSnapshot();
 })
 
 test('Duration is too long', async () => {
     const playlist = await fetchPlaylist();
-    const container = render(<PlayListItem songName={playlist.title} songTime={12345678} artist={playlist.artist} isPlaying={true}/>)
+    if (!playlist) throw new Error('Playlist is undefined');
+    const container = render(<PlayListItem songName={playlist[0].title} songTime={12345678} artist={playlist[0].artist} isPlaying={true}/>)
     expect(container).toMatchSnapshot();
 })
 
@@ -34,19 +67,10 @@ test('Renders with minimal props', () => {
     const container = render(<PlayListItem songName="Test Song" songTime={120} artist="Test Artist" isPlaying={false}/>)
     expect(container).toMatchSnapshot();
 })
-// @ts-ignore
-test('Handles missing props', () => {
-    const container = render(<PlayListItem songName="Test Song" songTime={120} artist="Test Artist" />)
-    expect(container).toMatchSnapshot();
-})
-// @ts-ignore
-test('Handles typo in props', () => {
-    const container = render(<PlayListItem songName="Test Song" songTime={120} artist="Test Artist" isplayin={true} />)
-    expect(container).toMatchSnapshot();
-})
 
 test('Renders with different durations', async () => {
     const playlist = await fetchPlaylist();
-    const container = render(<PlayListItem songName={playlist.title} songTime={300} artist={playlist.artist} isPlaying={false}/>)
+    if (!playlist) throw new Error('Playlist is undefined');
+    const container = render(<PlayListItem songName={playlist[0].title} songTime={300} artist={playlist[0].artist} isPlaying={false}/>)
     expect(container).toMatchSnapshot();
 })

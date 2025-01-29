@@ -61,7 +61,6 @@ export default function MusicPlayer() {
       setSong(playlist[currentSong].song);
     }
    }, [currentSong, playlist])
-
   return (
     <div className="flex flex-col md:flex-row bg-(--bg-color) dark:bg-(--secondary) text-(--primary) dark:text-(--bg-color) border-4 border-(--secondary) dark:border-(--bg-color) rounded-2xl">
       <CurrentlyPlaying

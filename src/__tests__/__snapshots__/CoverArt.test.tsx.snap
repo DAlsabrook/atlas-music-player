@@ -8,7 +8,7 @@ exports[`renders cover image when loading is false 1`] = `
     <img
       alt="Cover art"
       class="w-full h-full rounded-lg"
-      src="https://utfs.io/f/E9fJnaKtTy1bOclGsk1hB7xMLwUVFDiXypZukQrcnYbgdEv6"
+      src="https://placehold.co/400"
     />
     <div
       class="absolute inset-0 flex items-center justify-center bg-(--bg-color) bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg overflow-hidden"
@@ -22,41 +22,7 @@ exports[`renders cover image when loading is false 1`] = `
           Lyrics
         </p>
         <p>
-          [Verse]
-The night whispers secrets we knew,
-Under twilight's soft, velvet hue,
-In a city painted in blue,
-We danced 'round the truth we flew.
-
-[Verse 2]
-Lamp posts glow with memories sweet,
-As shadows and dreams softly meet,
-Every step we take is so fleet,
-To the syncopated heartbeat.
-
-[Chorus]
-Our love's a gentle, wistful tune,
-Like a rose in the midday bloom,
-Though fleeting like a smoke plume,
-It's a love that leaves no room.
-
-[Verse 3]
-Stars overhead wink their bright eye,
-As the moon sighs a fond goodbye,
-We'll let this moment, too, pass by,
-In this melancholy sky.
-
-[Bridge]
-Blue echoes on the midnight air,
-Love caressed with a tender flair,
-Through the darkness, hearts laid bare,
-In the silence, a fervent prayer.
-
-[Chorus]
-Our love's a gentle, wistful tune,
-Like a rose in the midday bloom,
-Though fleeting like a smoke plume,
-It's a love that leaves no room.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </p>
       </div>
     </div>
@@ -92,7 +58,7 @@ exports[`renders lyrics when loading is false and image is hovered 1`] = `
     <img
       alt="Cover art"
       class="w-full h-full rounded-lg"
-      src="https://utfs.io/f/E9fJnaKtTy1bOclGsk1hB7xMLwUVFDiXypZukQrcnYbgdEv6"
+      src="https://placehold.co/400"
     />
     <div
       class="absolute inset-0 flex items-center justify-center bg-(--bg-color) bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg overflow-hidden"
@@ -106,41 +72,7 @@ exports[`renders lyrics when loading is false and image is hovered 1`] = `
           Lyrics
         </p>
         <p>
-          [Verse]
-The night whispers secrets we knew,
-Under twilight's soft, velvet hue,
-In a city painted in blue,
-We danced 'round the truth we flew.
-
-[Verse 2]
-Lamp posts glow with memories sweet,
-As shadows and dreams softly meet,
-Every step we take is so fleet,
-To the syncopated heartbeat.
-
-[Chorus]
-Our love's a gentle, wistful tune,
-Like a rose in the midday bloom,
-Though fleeting like a smoke plume,
-It's a love that leaves no room.
-
-[Verse 3]
-Stars overhead wink their bright eye,
-As the moon sighs a fond goodbye,
-We'll let this moment, too, pass by,
-In this melancholy sky.
-
-[Bridge]
-Blue echoes on the midnight air,
-Love caressed with a tender flair,
-Through the darkness, hearts laid bare,
-In the silence, a fervent prayer.
-
-[Chorus]
-Our love's a gentle, wistful tune,
-Like a rose in the midday bloom,
-Though fleeting like a smoke plume,
-It's a love that leaves no room.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </p>
       </div>
     </div>
