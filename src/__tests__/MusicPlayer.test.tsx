@@ -15,7 +15,6 @@ test('renders MusicPlayer and displays the first song in the playlist', async ()
   render(<MusicPlayer />);
 
   await waitFor(() => {
-    screen.debug();
     const songTitle = screen.getAllByText("Starlight Scene")[0];
     expect(songTitle).toBeInTheDocument();
   });
