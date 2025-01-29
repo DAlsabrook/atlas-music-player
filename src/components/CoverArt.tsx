@@ -1,6 +1,6 @@
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
-import { Song } from './MusicPlayer';
+import { Song } from './MusicPlayer.tsx';
 
 type coverArtProps = {
     loading: Boolean;

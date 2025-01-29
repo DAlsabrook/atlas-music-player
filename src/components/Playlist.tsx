@@ -1,7 +1,7 @@
-import { PlayListItem } from "./PlayListItem";
+import { PlayListItem } from "./PlayListItem.tsx";
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
-import { Song } from "./MusicPlayer";
+import { Song } from "./MusicPlayer.tsx";
 
 type CurrentlyPlayingProps = {
   loading: Boolean;

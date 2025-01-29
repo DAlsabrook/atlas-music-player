@@ -1,5 +1,5 @@
 import { FaVolumeUp } from "react-icons/fa";
-import Slider from "rc-slider";
+import Slider from "rc-slider/lib/Slider";
 import "rc-slider/assets/index.css";
 
 type volumeProps = {
@@ -15,7 +15,7 @@ export function VolumeControls ({ setVolume }: volumeProps) {
                 min={0}
                 max={100}
                 defaultValue={50}
-                onChange={(value) => setVolume(value)}
+                onChange={(value: number) => setVolume(value)}
                 trackStyle={{
                     height: '8px',
                     backgroundColor: '#333333'

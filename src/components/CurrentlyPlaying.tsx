@@ -1,8 +1,8 @@
-import { CoverArt } from "./CoverArt";
-import { SongTitle } from "./SongTitle";
-import { PlayControls } from "./PlayControls";
-import { VolumeControls } from "./VolumeControls";
-import { Song } from "./MusicPlayer";
+import { CoverArt } from "./CoverArt.tsx";
+import { SongTitle } from "./SongTitle.tsx";
+import { PlayControls } from "./PlayControls.tsx";
+import { VolumeControls } from "./VolumeControls.tsx";
+import { Song } from "./MusicPlayer.tsx";
 
 type CurrentlyPlayingProps = {
   loading: Boolean;

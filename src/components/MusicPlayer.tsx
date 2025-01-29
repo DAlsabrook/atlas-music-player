@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import CurrentlyPlaying from "./CurrentlyPlaying"
-import { PlayList } from "./Playlist"
-import { AudioPlayer } from "./AudioPlayer"
+import CurrentlyPlaying from "./CurrentlyPlaying.tsx"
+import { PlayList } from "./Playlist.tsx"
+import { AudioPlayer } from "./AudioPlayer.tsx"
 
 export type Song = {
   artist: String
