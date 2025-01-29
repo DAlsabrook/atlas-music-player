@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 
 interface AudioPlayerProps {
-  song: String;
-  isPlaying: Boolean;
+  song: string;
+  isPlaying: boolean;
   volume: number;
   speed: number;
 }
@@ -13,7 +13,7 @@ export function AudioPlayer({ song, isPlaying, volume, speed }: AudioPlayerProps
   useEffect(() => {
     const audio = audioRef.current;
     if (audio) {
-      audio.src = song.toString();
+      audio.src = song;
       audio.playbackRate = speed;
 
       const handlePause = () => {
@@ -23,7 +23,9 @@ export function AudioPlayer({ song, isPlaying, volume, speed }: AudioPlayerProps
       audio.addEventListener('pause', handlePause);
 
       if (isPlaying) {
-        audio.play().catch(() => {return})
+        audio.play().catch((error) => {
+          console.error('Error playing audio:', error);
+        });
       } else {
         audio.pause();
       }
@@ -34,7 +36,7 @@ export function AudioPlayer({ song, isPlaying, volume, speed }: AudioPlayerProps
         audio.src = '';
       };
     }
-  }, [song, isPlaying]);
+  }, [song, isPlaying, speed]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -48,7 +50,7 @@ export function AudioPlayer({ song, isPlaying, volume, speed }: AudioPlayerProps
     if (audio) {
       audio.playbackRate = speed;
     }
-  }, [speed])
+  }, [speed]);
 
   return (
     <div>
@@ -56,6 +58,3 @@ export function AudioPlayer({ song, isPlaying, volume, speed }: AudioPlayerProps
     </div>
   );
 }
-
-// For reference later
-// https://www.telerik.com/blogs/how-create-react-audio-library

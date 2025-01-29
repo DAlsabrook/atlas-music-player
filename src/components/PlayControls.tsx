@@ -60,14 +60,14 @@ export function PlayControls ({ currentSong, songsLength, setCurrentSong, setIsP
             >
                 {speed}x
             </button>
-            <button className={`cursor-pointer ${prevEnd ? 'opacity-50' : 'opacity-100'}`} onClick={handlePrev}>
+            <button aria-label="Previous" className={`cursor-pointer ${prevEnd ? 'opacity-50' : 'opacity-100'}`} onClick={handlePrev}>
                 <FaBackward/>
             </button>
-            <button className='cursor-pointer border-2 rounded-lg p-4 text-(--secondary) dark:text-(--bg-color)'
+            <button aria-label="PlayPause" className='cursor-pointer border-2 rounded-lg p-4 text-(--secondary) dark:text-(--bg-color)'
                 onClick={() => setIsPlaying(!isPlaying)}>
-                {isPlaying ? (<FaPause/>):(<FaPlay/>)}
+                {isPlaying ? (<FaPause aria-label="PauseIcon"/>):(<FaPlay aria-label="PlayIcon"/>)}
             </button>
-            <button className={`cursor-pointer ${nextEnd ? 'opacity-50' : 'opacity-100'}`} onClick={handleNext}>
+            <button aria-label="Next" className={`cursor-pointer ${nextEnd ? 'opacity-50' : 'opacity-100'}`} onClick={handleNext}>
                 <FaForward/>
             </button>
             <button className='cursor-pointer' onClick={handleRand}>
