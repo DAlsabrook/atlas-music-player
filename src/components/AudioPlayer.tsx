@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 
 interface AudioPlayerProps {
-  song: string;
-  isPlaying: boolean;
+  song: String;
+  isPlaying: Boolean;
   volume: number;
   speed: number;
 }
@@ -13,7 +13,7 @@ export function AudioPlayer({ song, isPlaying, volume, speed }: AudioPlayerProps
   useEffect(() => {
     const audio = audioRef.current;
     if (audio) {
-      audio.src = song;
+      audio.src = song.toString();
       audio.playbackRate = speed;
 
       const handlePause = () => {
