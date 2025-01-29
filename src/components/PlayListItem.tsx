@@ -6,7 +6,7 @@ type PlayListItemProps = {
 }
 
 export function PlayListItem({ songName, songTime, artist, isPlaying }: PlayListItemProps) {
-    const time = songTime.toString()
+    const time = songTime ? songTime.toString() : "0";
     const formattedTime = `${time.slice(0, 1)}:${time.slice(1)}`;
 
     return (

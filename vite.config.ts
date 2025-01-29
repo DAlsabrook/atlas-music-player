@@ -1,5 +1,4 @@
-// filepath: /com.docker.devenvironments.code/vite.config.ts
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import tailwindcss from '@tailwindcss/vite';
@@ -10,7 +9,12 @@ export default defineConfig({
     tsconfigPaths(),
     tailwindcss()
   ],
+  test: {
+    environment: 'jsdom',
+    setupFiles: 'src/setup_test.ts',
+  },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
+
 });
